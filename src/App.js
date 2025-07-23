@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import { Banner } from "./components/Banner";
+import { Form } from "./components/Form";
+import { Members } from "./components/Members";
+import { times } from "./data/times";
+import { Footer } from "./components/Footer";
 
 function App() {
+
+  const [members, setMembers] = useState([]);
+
+  const handleFormSubmit = (member) => {
+    setMembers((members) => [...members, member]);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Banner />
+      <Form onSubmit={e => handleFormSubmit(e)} times={times.map(time => time.nome)} />
+
+      {times.map((time, index) => (
+        <Members
+          key={index}
+          name={time.nome}
+          corPrimaria={time.corPrimaria}
+          corSecundaria={time.corSecundaria}
+          list={members.filter(member => member.time === time.nome)}
+        />
+      ))}
+      <Footer />
     </div>
   );
 }

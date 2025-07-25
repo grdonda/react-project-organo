@@ -19,7 +19,7 @@ export const Card = ({ member, backgroundColor, onDelete, onFavorite }) => {
                 <h5>{member.cargo}</h5>
 
                 <div className="favoritar" onClick={(e) => onFavorite(member.id)}>
-                    {!member.favorite || member.favorite == false ? <AiOutlineHeart size={25} /> : <AiFillHeart size={25} />}
+                    {!member.favorite || member.favorite === false ? <AiOutlineHeart size={25} /> : <AiFillHeart size={25} />}
                 </div>
 
             </div>

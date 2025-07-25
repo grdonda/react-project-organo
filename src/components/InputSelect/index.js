@@ -7,7 +7,7 @@ export const InputSelect = ({ label, list, value, onChange }) => {
             <select onChange={onChange} value={value}>
                 <option disabled value="">Selecione uma opção</option>
                 {list.map((item) => (
-                    <option key={item} value={item}>
+                    <option key={item.id} value={item}>
                         {item}
                     </option>
                 ))}

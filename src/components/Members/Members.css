@@ -1,6 +1,7 @@
 .members {
     text-align: center;
     padding: 32px;
+    position: relative;
 }
 
 .members h3 {
@@ -15,4 +16,9 @@
     justify-content: space-around;
     margin-top: 32px;
     flex-wrap: wrap;
+}
+
+.members .cor{
+    position: absolute;
+    right: 50px;
 }

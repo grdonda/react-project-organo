@@ -18,3 +18,10 @@
     box-sizing: border-box;
     outline: none;
 }
+
+.input-text input[type="color"] {
+    padding: 5px 24px;
+    height: 40px;
+    border: none;
+    cursor: pointer;
+}

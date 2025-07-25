@@ -1,18 +1,31 @@
-import { Card } from "../Card"
-import "./Members.css"
+import hexToRgba from "hex-to-rgba";
+import { Card } from "../Card";
+import "./Members.css";
 
-export const Members = (props) => {
+export const Members = ({ squad, listMembers, onChangeColor, onDelete , onFavorite}) => {
+
+    const cor = hexToRgba(squad.cor, '0.6');
+
     return (
-        props.list.length > 0 &&
-        <section className="members" style={{ backgroundColor: props.corSecundaria }}>
-            <h3>{props.name}</h3>
+        listMembers.length > 0 &&
+        <section className="members" style={{ backgroundImage: 'url(/imagens/fundo.png)', backgroundColor: cor }}>
+
+            <h3 style={{ borderColor: squad.cor }}>{squad.nome}</h3>
+            <input className="cor" type="color" onChange={(e) => onChangeColor(squad.nome, e.target.value)} value={squad.cor} />
+
             <div className='colaboradores'>
                 {
-                    (!props.list || props.list.length === 0)
+                    (!listMembers || listMembers.length === 0)
                         ? <p>Nenhum colaborador cadastrado.</p>
-                        : props.list.map((member, index) => (
-                            <Card key={index} {...member} corPrimaria={props.corPrimaria} />
-                        ))
+                        : listMembers.map((member, index) => {
+
+                            return <Card
+                                key={index}
+                                member={member}
+                                backgroundColor={squad.cor}
+                                onDelete={onDelete}
+                                onFavorite={onFavorite} />
+                        })
                 }
             </div>
         </section>
